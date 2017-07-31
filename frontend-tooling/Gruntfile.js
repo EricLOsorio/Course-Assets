@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       }
     },
     htmllint: {
-      all: ['html/*.html']
+      all: ['./*.html']
     },
     csslint: {
       all: {
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'js/*.js'],
+      all: ['Gruntfile.js'],
       options: {
         asi: true, // Don't worry about missing semicolons
         undef: true, // Warn about undeclared globals
@@ -90,15 +90,19 @@ module.exports = function(grunt) {
     exec: {
       add: 'git add .', // Add all changed files to the commit
       commit: {
-          cmd: function () {
-            var oldPkg = this.config('pkg') // Get the pkg property from our config
-              , pkg = grunt.file.readJSON('package.json')
-              , cmd = 'git commit -am "Updating from ' + oldPkg.version + ' to ' + pkg.version + '"';
+       cmd: function () {
+       var oldPkg = this.config('pkg'), // Get the pkg property from our config
+          pkg = grunt.file.readJSON('package.json'),
+          cmd = 'git commit -am "Updating from ' + oldPkg.version + ' to ' + pkg.version + '"';
             return cmd;
         }
       },
       push: 'git push' // Send our changes to the repository
     }
+  });
+
+  grunt.registerTask('build', function(){
+    grunt.task.run(['cssmin','uglify','htmllint','csslint','jshint','sass','jasmine','imagemin'])
   });
 
   grunt.registerTask('minify', function (full) {
@@ -113,7 +117,7 @@ module.exports = function(grunt) {
     if (!releaseType) {
       releaseType = 'patch';
     }
-    grunt.task.run(['version::' + releaseType, 'exec:add', 'exec:commit', 'exec:push']);
+    grunt.task.run(['build', 'version::' + releaseType, 'exec:add', 'exec:commit', 'exec:push']);
   });
 
   // Default task(s).
