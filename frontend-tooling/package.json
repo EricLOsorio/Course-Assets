@@ -36,6 +36,7 @@
     "gulp-imagemin": "^3.3.0",
     "gulp-jasmine": "^2.4.2",
     "gulp-jshint": "^2.0.4",
+    "gulp-load-tasks": "^0.8.4",
     "gulp-pixrem": "^1.0.0",
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
@@ -43,6 +44,7 @@
     "gulp-version": "1.2.4",
     "gulp-watch": "^4.3.11",
     "load-grunt-tasks": "^3.5.2",
+    "load-tasks-gulp": "0.0.3",
     "pixrem": "^4.0.1",
     "postcss-scss": "^1.0.2"
   }
