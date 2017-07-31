@@ -81,6 +81,20 @@ module.exports = function(grunt) {
         }]
       }
     },
+    postcss: {
+      options: {
+        map: true,
+	processors: [
+	  require('autoprefixer')({browsers:'last 2 versions'}),
+	  require('cssnano')()
+	]
+      },
+      dist: {
+        src:'styles/style.css',
+	dest: 'dest/css/style.css'
+      }
+    },
+    
     version: {
       src: ['package.json', 'index.html'],
       options: {
@@ -102,7 +116,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build', function(){
-    grunt.task.run(['cssmin','uglify','htmllint','csslint','jshint','sass','jasmine','imagemin'])
+    grunt.task.run(['cssmin','uglify','htmllint','csslint','jshint','sass','jasmine','imagemin','postcss'])
   });
 
   grunt.registerTask('minify', function (full) {
