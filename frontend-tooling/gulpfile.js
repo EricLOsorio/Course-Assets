@@ -22,13 +22,13 @@ var gulp = require ( 'gulp' ),
     minimist = require( 'minimist'),
     exec = require( 'gulp-exec');
 
-var knownOptions = {
+//var knownOptions = {
   
-  type: 'type'
+//  type: 'type'
 
-};
+//};
 
-var options = minimist(process.argv.slice(1), knownOptions);
+//var options = minimist(process.argv.slice(1), knownOptions);
 
 gulp.task('build',function(callback){
 
@@ -51,13 +51,13 @@ gulp.task('deploy', function () {
 
 gulp.task( 'bump', function() {
 
-// var knownOptions = {
+ var knownOptions = {
  
-//   type : 'type'
+   type : 'type'
  
-// }; 
+ }; 
 
-// var options = minimist(process.argv.slice(1), knownOptions);
+ var options = minimist(process.argv.slice(1), knownOptions);
   
   if(options.type == 'minor'){
   
