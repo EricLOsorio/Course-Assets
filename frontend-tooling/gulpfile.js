@@ -22,13 +22,6 @@ var gulp = require ( 'gulp' ),
     minimist = require( 'minimist'),
     exec = require( 'gulp-exec');
 
-//var knownOptions = {
-  
-//  type: 'type'
-
-//};
-
-//var options = minimist(process.argv.slice(1), knownOptions);
 
 gulp.task('build',function(callback){
 
