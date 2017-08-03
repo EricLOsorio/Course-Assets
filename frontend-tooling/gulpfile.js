@@ -35,7 +35,7 @@ gulp.task('deploy', function () {
   return gulp.src('')
              .pipe(exec('git add .'))
 	     .pipe(exec('git commit -am "Releasing"'))
-	     .pipe(exe('git push'))
+	     .pipe(exec('git push'))
 	     .pipe(exec.reporter());
 
 });
