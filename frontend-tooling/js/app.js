@@ -1,5 +1,5 @@
-(function (w) {
-  w.app = {
+module.exports = (function()  {
+  return {
     // Message to display
     startupMessage: 'Houston we have liftoff',
     shutdownMessage: 'Houston we have landed',
@@ -17,5 +17,5 @@
         this.$running = false;
       }
     }
-  }
-})(window);
+  };
+})();
